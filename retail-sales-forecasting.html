@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retail Sales Forecasting & Inflation Trends (U.S.)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+    }
+    h1, h2 {
+      color: #007acc;
+      margin-top: 0;
+    }
+    .btns {
+      margin: 1rem 0 2rem;
+    }
+    .btn {
+      display: inline-block;
+      margin: 0.25rem 0.5rem 0.25rem 0;
+      background-color: #007acc;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn:hover { background-color: #005f99; }
+    .card {
+      background: #fff;
+      padding: 1.25rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 1.25rem;
+    }
+    ul { margin-top: 0.5rem; }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #e0e0e0;
+    }
+    footer a {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+    .back {
+      display: inline-block;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 600;
+    }
+    .back:hover { text-decoration: underline; }
+    code { background: #f0f2f5; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Retail Sales Forecasting & Inflation Trends (U.S.)</h1>
+    <p>Nominal vs inflation-adjusted retail sales using Census + CPI (1992–2025)</p>
+  </header>
+
+  <div class="container">
+
+    <a class="back" href="index.html">← Back to Home</a>
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p>
+        This project cleans and merges U.S. Census monthly Retail &amp; Food Services Sales with BLS/FRED CPI
+        to produce <strong>inflation-adjusted (real)</strong> sales and visualize long-term trends in Tableau.
+        It highlights how purchasing power changes over time even when nominal sales are rising.
+      </p>
+      <div class="btns">
+        <a class="btn" href="https://public.tableau.com/app/profile/mohammed.tariq2342/viz/RetailSalesForecastingInflationTrendsU_S_/NominalvsReal" target="_blank" rel="noopener">View Interactive Dashboard</a>
+        <a class="btn" href="https://github.com/YourUser/retail-sales-forecasting-inflation-trends" target="_blank" rel="noopener">View Code on GitHub</a>
+        <!-- If you want to offer the cleaned CSV directly from your site, drop it in /assets and uncomment below -->
+        <!-- <a class="btn" href="assets/adjusted_retail_sales.csv" download>Download Cleaned CSV</a> -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Python (Pandas) for cleaning, merging, CPI indexing</li>
+        <li>Tableau Public for visualization (monthly timeline, nominal vs real)</li>
+        <li>CSV/XLSX inputs for reproducibility</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Data Sources</h2>
+      <ul>
+        <li>U.S. Census: Retail &amp; Food Services Sales (1992–Present) — Excel</li>
+        <li>FRED/BLS: CPIAUCSL (seasonally adjusted) — CSV</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>What I Did</h2>
+      <ul>
+        <li>Parsed multi-sheet Census workbook (one sheet per year), auto-detected headers, extracted “Retail and food services sales, total”.</li>
+        <li>Merged with CPI, indexed CPI to the latest year, computed <code>Real_Sales</code>.</li>
+        <li>Exported <code>adjusted_retail_sales.csv</code> for BI tools and built a Tableau line chart (Nominal vs Real).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Reproduce</h2>
+      <ol>
+        <li>Clone the repo (link above) and place raw files in <code>data/</code>:
+          <ul>
+            <li><code>retail_sales_us_1992_2025.xlsx</code></li>
+            <li><code>cpi_us_monthly_1992_2025.csv</code></li>
+          </ul>
+        </li>
+        <li>Run the Jupyter notebook to generate <code>data/adjusted_retail_sales.csv</code>.</li>
+        <li>In Tableau: connect to the CSV → Date on Columns (Month, continuous) → Nominal &amp; Real on Rows → add Year filter.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Mohammed Tariq ·
+    <a href="mailto:mohammed1645tariq@gmail.com">Email Me</a> ·
+    <a href="https://github.com/MohammedTariq" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</body>
+</html>
